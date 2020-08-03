@@ -11,6 +11,6 @@ Using YOLOV3 to detect, classify, and label the objects.
   <li>Compute bounding box coordinates, class name, and confidence fo the detected object.</li>
   <li>Draw rectangle, put label and confidence over the detected object on the frame.</li>
 </ul>
-<img src="i1.png" width=800 height=500>
+<img src="i1.png" width=900 height=500>
 
 <b>Look at the manual provided in this repo for detail explanation.</b>
