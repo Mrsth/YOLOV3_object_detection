@@ -1,36 +1,16 @@
 # YOLOV3_object_detection
 Using YOLOV3 to detect, classify, and label the objects.
 
-<div> 
-  1) Load the CNN by:"cv2.dnn.readNetFromDarknet("yolov3.cfg","yolov3.weights")" <br>
-  2) Now convert the image into blob type because the cnn can only process blob type image.
-     blob = cv2.dnn.blobFromImage("frame")
-     <br>
-  3) Now we have to feed the blob into the cnn:
-     net.setInput("blob")
-     <br>
-  4) Now that we have provided the input into the cnn we expect output from the cnn.<br>
-  5) And there are three output given by the cnn. i.e. 3 prediction for each object.<br>
-  6) So we have to find the name of the three output layers so that we can get their outputs.<br>
-  7) Find the name of all the layers of the cnn by:
-     layer_names = net.getLayerNames()
-     output_layer_coordinates = net.getUnconnectedOutLayers()
-     THIS WILL GIVE YOU THE COORDINATES OF ALL THREE OUTPUT LAYERS.<br>
-  8) Now the coordinates will be helpful as index to find the names of 3 output layers from
-     layers_names list.
-     out_layers = [layers_names[i[0]-1] for i in net.getUnconnectedOutLayers()]
-     print(out_layers)
-     ['yolo_82', 'yolo_94', 'yolo_106']  # NAMES OF OUTPUT LAYERS <br>
-  9) Now to get the output:
-     outputs = net.forward(out_layers)
-     print("Outputs = ",len(outputs))  => Result Outputs =  3 in the form of [[List 1],[List 2],[List 3]] <br>
-  10) List 1 = (507, 85) = 507 rows, 85 columns
-      List 2 = (2028, 85) = 2028 rows, 85 columns
-      List 3 = (8112, 85) = 8112 rows, 85 columns
-      85 = [x,y,w,h,c1,c2,c3,...............,c85] <br>
-  11) In each list we do the detection so we have one prediction from each 3 list. <br>
-  12) To avoid the overlapping of the bounding box perform NMS operation. <br>
-  13) Finally draw a rectangle and put some text on the bouding boxes. <br>
+<ul>
+  <li>At first, we need to load the cnn.</li>
+  <li>Convert each frame read from camera into blob type because cnn can only handle blob type images.</li>
+  <li>Set the converted blob type image as an input to the network.</li>
+  <li>Now that we have provided the input we require an output.</li>
+  <li>There are three out puts for a single detected objects.</li>
+  <li>Find the name of the output layers to find the outputs of the three layers.</li>
+  <li>Compute bounding box coordinates, class name, and confidence fo the detected object.</li>
+  <li>Draw rectangle, put label and confidence over the detected object on the frame.</li>
+</ul>
+<img src="i1.png" width=800 height=500>
 
-  <img src="i1.png">
-</div>
+<b>Look at the manual provided in this repo for detail explanation.</b>
